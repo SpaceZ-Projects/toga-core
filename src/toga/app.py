@@ -919,12 +919,6 @@ class App:
     def add_background_task(self, handler: BackgroundTask) -> None:
         """**DEPRECATED** – Use :any:`asyncio.create_task`, or override/assign
         :meth:`~toga.App.on_running`."""
-        warnings.warn(
-            "App.add_background_task is deprecated. Use asyncio.create_task(), "
-            "or set an App.on_running() handler",
-            DeprecationWarning,
-            stacklevel=2,
-        )
 
         self.loop.call_soon_threadsafe(wrapped_handler(self, handler))
 

@@ -526,7 +526,7 @@ class App:
 
     @main_window.setter
     def main_window(self, window: MainWindow | str | None) -> None:
-        if window is None or window is App.BACKGROUND or isinstance(window, Window, Forms.Form):
+        if window is None or window is App.BACKGROUND or isinstance(window, (Window, Forms.Form)):
             # The main window must be closable
             if isinstance(window, Window) and not window.closable:
                 raise ValueError("The window used as the main window must be closable.")

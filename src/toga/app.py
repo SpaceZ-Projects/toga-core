@@ -24,6 +24,9 @@ from toga.screens import Screen
 from toga.statusicons import StatusIconSet
 from toga.widgets.base import Widget
 from toga.window import MainWindow, Window, WindowSet
+import clr
+clr.AddReference('System.Windows.Forms')
+import System.Windows.Forms as Forms
 
 if TYPE_CHECKING:
     from toga.dialogs import Dialog
@@ -523,7 +526,7 @@ class App:
 
     @main_window.setter
     def main_window(self, window: MainWindow | str | None) -> None:
-        if window is None or window is App.BACKGROUND or isinstance(window, Window):
+        if window is None or window is App.BACKGROUND or isinstance(window, Window, Forms.Form):
             # The main window must be closable
             if isinstance(window, Window) and not window.closable:
                 raise ValueError("The window used as the main window must be closable.")
